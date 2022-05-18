@@ -59,21 +59,21 @@ def run(argv=None, save_main_session=True):
     }, {
         'name': 'time_period_end', 		'type': 'TIMESTAMP', 		'mode': 'REQUIRED'
     }, {
-        'name': 'time_open', 			    'type': 'TIMESTAMP', 		'mode': 'REQUIRED'
+        'name': 'time_open', 			'type': 'TIMESTAMP', 		'mode': 'REQUIRED'
     }, {
-        'name': 'time_close', 			  'type': 'TIMESTAMP', 		'mode': 'REQUIRED'
+        'name': 'time_close', 			'type': 'TIMESTAMP', 		'mode': 'REQUIRED'
     }, {
-        'name': 'price_open', 			  'type': 'FLOAT', 		    'mode': 'REQUIRED'
+        'name': 'price_open', 			'type': 'FLOAT', 		    'mode': 'REQUIRED'
     }, {
-        'name': 'price_high', 			  'type': 'FLOAT', 		    'mode': 'REQUIRED'
+        'name': 'price_high', 			'type': 'FLOAT', 		    'mode': 'REQUIRED'
     }, {
-        'name': 'price_low', 			    'type': 'FLOAT', 		    'mode': 'REQUIRED'
+        'name': 'price_low', 			'type': 'FLOAT', 		    'mode': 'REQUIRED'
     }, {
         'name': 'price_close',      	'type': 'FLOAT', 		    'mode': 'REQUIRED'
     }, {
         'name': 'volume_traded',    	'type': 'FLOAT', 		    'mode': 'REQUIRED'
     }, {
-        'name': 'trades_count', 		  'type': 'INTEGER', 		  'mode': 'REQUIRED'
+        'name': 'trades_count', 		'type': 'INTEGER', 		    'mode': 'REQUIRED'
     }]
     }
     # The pipeline will be run on exiting the with block.
@@ -98,7 +98,7 @@ def run(argv=None, save_main_session=True):
                 'trades_count':		    x[9]
             })
         | beam.io.WriteToBigQuery(
-                                    'kaj-crypto:external_tables.dflow-crypto_activity', 
+                                    'kaj-crypto:external_tables.dflow-crypto_activity',  
                                     schema = pipeline_schema,
                                     custom_gcs_temp_location='gs://kaj-crypto',
                                     write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND,
